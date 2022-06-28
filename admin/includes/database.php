@@ -34,6 +34,10 @@ class Database {
         $escaped_string = $this->connection->real_escape_string($string);
         return $escaped_string;
     }
+
+    public function insertId(){
+        return mysqli_insert_id($this->connection);
+    }
 }
 
 $database = new Database();

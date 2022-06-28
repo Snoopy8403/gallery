@@ -29,7 +29,13 @@
             echo "User by ID: " .  $userById->id . " Username: " . $userById->username;
             echo "User by ID: " .  $userById->id . " Name " . $userById->first_name . " " . $userById->last_name;
             
+            // $userById->last_name = "Elemer";
 
+            // $userById->update();
+            // echo "User by ID: " .  $userById->id . " Name " . $userById->first_name . " " . $userById->last_name;
+
+            $user = User::findUserById(4);
+            $user->delete();
 ?>
 
 
