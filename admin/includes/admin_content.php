@@ -34,8 +34,18 @@
             // $userById->update();
             // echo "User by ID: " .  $userById->id . " Name " . $userById->first_name . " " . $userById->last_name;
 
-            $user = User::findUserById(4);
-            $user->delete();
+            // $user = User::findUserById(2);
+            // $user->username = "Lucky";
+
+            // $user->delete();
+
+            $user = new User();
+
+             $user->username = "Laci";
+             $user->password = 123;
+             $user->first_name = "First";
+             $user->last_name = "Last";
+            $user->create();
 ?>
 
 
