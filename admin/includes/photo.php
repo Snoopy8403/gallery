@@ -42,6 +42,10 @@ class Photo extends DBObjects {
         }
     }
 
+    public function picturePath(){
+        return $this->upload_directory.DS.$this->filename;
+    }
+
     public function save(){
         if ($this->id) {
             $this->update();
@@ -54,11 +58,25 @@ class Photo extends DBObjects {
                 $this->custom_errors_array[] = "The file was not available";
                 return false;
             }
-            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;    
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+            
+            if (file_exists($target_path)) {
+                $this->custom_errors_array[] = "The file {$this->filename} alredy exists";
+                return false;
+            }
+
+            if (move_uploaded_file($this->tmp_path, $target_path)) {
+                if ($this->create()) {
+                    unset($this->tmp_path);
+                    return true;
+                }
+            }
+            else {
+                $this->custom_errors_array[] = "The file directory was not permission";
+                return false;
+            }
         }
     }
-
-
 }
 
 ?>
