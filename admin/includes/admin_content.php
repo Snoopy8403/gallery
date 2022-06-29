@@ -19,15 +19,15 @@
         <?php
         
             //Minden felhasznasznalo
-            $users = User::findAllUsers();
-            foreach ($users as $user) {
-                echo $user->username . "<br>";
-            }
+            // $users = User::findAll();
+            // foreach ($users as $user) {
+            //     echo $user->username . "<br>";
+            // }
 
             //Felhasznalo ID szerint
-            $userById = User::findUserById(2);
-            echo "User by ID: " .  $userById->id . " Username: " . $userById->username;
-            echo "User by ID: " .  $userById->id . " Name " . $userById->first_name . " " . $userById->last_name;
+            // $userById = User::findById(2);
+            // echo "User by ID: " .  $userById->id . " Username: " . $userById->username;
+            // echo "User by ID: " .  $userById->id . " Name " . $userById->first_name . " " . $userById->last_name;
             
             // $userById->last_name = "Elemer";
 
@@ -39,19 +39,43 @@
 
             // $user->delete();
 
-            $user = new User();
-             $user->username = "Dani";
-             $user->password = 123;
-             $user->first_name = "Da";
-             $user->last_name = "Ni";
-            $user->create();
+            // $user = new User();
+            // $user->username = "Dani";
+            // $user->password = 123;
+            // $user->first_name = "Da";
+            // $user->last_name = "Ni";
+            // $user->create();
 
-            $user = User::findUserById(5);
-            $user->username = "Atirat";
-            $user->password = "Password";
-            $user->first_name = "At";
-            $user->last_name = "Irat";
-            $user->update();
+            // $user = User::findById(5);
+            // $user->username = "Atirat";
+            // $user->password = "Password";
+            // $user->first_name = "At";
+            // $user->last_name = "Irat";
+            // $user->update();
+
+
+
+            // $photo = new Photo();
+            // $photo->title = "Photo to Dog";
+            // $photo->description = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...";
+            // $photo->size = "1234";
+            // $photo->filename = "dog";
+            // $photo->type = "jpg";
+            // $photo->create();
+
+            $photos = Photo::findAll();
+            foreach ($photos as $photo) {
+                echo "----------------------- <br>";
+                echo "Kép címe: " . $photo->title . " <br><br>";
+                echo "Leírás: " . $photo->description . " <br>";
+                echo "Méret: " . $photo->size . " <br>";
+                echo "Filenév: " . $photo->filename . " <br>";
+                echo "Típus: " . $photo->type . " <br>";
+                echo "-----------------------";
+            }
+
+            echo "Includes path: " . INCLUDES_PATH;
+
 ?>
 
 
