@@ -40,12 +40,18 @@
             // $user->delete();
 
             $user = new User();
-
-             $user->username = "Laci";
+             $user->username = "Dani";
              $user->password = 123;
-             $user->first_name = "First";
-             $user->last_name = "Last";
+             $user->first_name = "Da";
+             $user->last_name = "Ni";
             $user->create();
+
+            $user = User::findUserById(5);
+            $user->username = "Atirat";
+            $user->password = "Password";
+            $user->first_name = "At";
+            $user->last_name = "Irat";
+            $user->update();
 ?>
 
 
