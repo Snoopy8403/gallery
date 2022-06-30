@@ -2,12 +2,14 @@
 
 class Photo extends DBObjects {
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('id','title', 'description', 'size','filename','type');
+    protected static $db_table_fields = array('id','title', 'caption', 'description', 'size','filename', 'alternate_text','type');
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $size;
     public $filename;
+    public $alternate_text;
     public $type;
 
     public $tmp_path;
@@ -75,6 +77,17 @@ class Photo extends DBObjects {
                 $this->custom_errors_array[] = "The file directory was not permission";
                 return false;
             }
+        }
+    }
+
+    public function deletePhoto(){
+        if ($this->delete()) {
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picturePath();
+            
+            return unlink($target_path) ? true : false;
+        }
+        else {
+            return false;
         }
     }
 }

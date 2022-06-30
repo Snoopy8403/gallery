@@ -1,24 +1,21 @@
-<?php include("includes/init.php"); ?>
-<?php 
+<?php include("includes/init.php"); 
 
     if (!$session->isSignedIn()) {
         redirect("login.php");
     }
-?>
-  
-  <?php 
-  
-  if (empty($_GET['id'])) {
-    redirect("photos.php");
-  }
 
-  $photo = Photo::findById($_GET['id']);
+    if (empty($_GET['id'])) {
+      redirect("photos.php");
+    }
 
-  if ($photo) {
-    $photo->delete_photo();
-  } else {
-    redirect("photos.php");
-  }
+    $photo = Photo::findById($_GET['id']);
+
+    if ($photo) {
+      $photo->deletePhoto();
+      redirect('photos.php');
+    } else {
+      redirect("photos.php");
+    }
 
 
 ?>
